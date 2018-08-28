@@ -18,6 +18,9 @@ var ENV = process.env.ENVIROMENT || "development";
  * Api routes.
  */
 
+var visualizationRoutes = require("./api/routes/visualization");
+app.use("/visualization", visualizationRoutes);
+
 /**
  * Startup our app at http://localhost:3000
  */
