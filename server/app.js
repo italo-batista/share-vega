@@ -8,17 +8,18 @@
  * Imports.
  */
 
-var express = require("express");
+const express = require("express");
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
-var app = express();
+const app = express();
 
 /**
  * Defining constants.
  */
 
-var PORT = process.env.PORT || 3000;
-var ENV = process.env.ENVIROMENT || "development";
+const PORT = process.env.PORT || 3000;
+const ENV = process.env.ENVIROMENT || "development";
 
 /**
  * Settings.
@@ -26,22 +27,22 @@ var ENV = process.env.ENVIROMENT || "development";
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 app.use(function (req, res, next) {
   res.header('Content-Type', 'application/json');
   next();
 });
-
 app.post('/', function (req, res) {
   // Returning to client in request response the body request sent for him.
   res.end(JSON.stringify(req.body, null, 2))
 });
 
+app.use(morgan('common'));
+
 /**
  * Api routes.
  */
 
-var visualizationRoutes = require("./api/routes/visualization");
+const visualizationRoutes = require("./api/routes/visualization");
 app.use("/visualization", visualizationRoutes);
 
 /**
