@@ -24,8 +24,9 @@ const app = express();
  */
 
 const PORT = process.env.PORT || 3000;
-const ENV = process.env.ENVIROMENT || "development";
-const LOG_DIRECTORY = path.join("./", 'logs');
+const ENV = process.env.ENVIROMENT || 'development';
+const LOG_DIRECTORY = path.join('./', 'logs');
+const STATIC_FILES_DIRECTORY = path.join('./', 'static');
 
 /**
  * Settings.
@@ -36,6 +37,7 @@ app.all('/*', function(req, res, next) {
   next();
 });
 
+// API documentation UI
 app.use(swagger.init(app, {
   apiVersion: '1.0',
   swaggerVersion: '1.0',
@@ -57,6 +59,7 @@ app.post('/', function (req, res) {
   res.end(JSON.stringify(req.body, null, 2))
 });
 
+// Logging in file
 fs.existsSync(LOG_DIRECTORY) || fs.mkdirSync(LOG_DIRECTORY);
 const logStream = rfs('share-vega.log', {
   size:     '10M', // rotate every 10 MegaBytes written
@@ -65,6 +68,9 @@ const logStream = rfs('share-vega.log', {
 });
 app.use(morgan('dev'));
 app.use(morgan('common', {stream: logStream}));
+
+// Serving static files
+app.use('/static', express.static(STATIC_FILES_DIRECTORY));
 
 /**
  * Api routes.
