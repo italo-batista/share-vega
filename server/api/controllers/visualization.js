@@ -6,25 +6,25 @@
 
 // Display list of all Visualizations.
 exports.index = function(req, res) {
-  res.send("NOT IMPLEMENTED: Visualization list");
+  res.json("NOT IMPLEMENTED: Visualization list");
 };
 
 // Display details for a specific Visualization.
 exports.show = function(req, res) {
-  res.send("NOT IMPLEMENTED: Visualization detail: " + req.params.id);
+  res.json("NOT IMPLEMENTED: Visualization detail: " + req.params.id);
 };
 
 // Handle Visualization create on POST.
 exports.create = function(req, res) {
-  res.send("NOT IMPLEMENTED: Visualization create POST");
+  res.json("NOT IMPLEMENTED: Visualization create POST");
 };
 
 // Handle Visualization update on PUT.
 exports.update = function(req, res) {
-  res.send("NOT IMPLEMENTED: Visualization update PUT");
+  res.json("NOT IMPLEMENTED: Visualization update PUT");
 };
 
 // Handle Visualization delete on DELETE.
 exports.delete = function(req, res) {
-  res.send("NOT IMPLEMENTED: Visualization delete DELETE");
+  res.json("NOT IMPLEMENTED: Visualization delete DELETE");
 };
