@@ -5,14 +5,37 @@
  */
 
 /**
- * Settings.
+ * Imports.
  */
 
 var express = require("express");
+const bodyParser = require('body-parser');
+
 var app = express();
+
+/**
+ * Defining constants.
+ */
 
 var PORT = process.env.PORT || 3000;
 var ENV = process.env.ENVIROMENT || "development";
+
+/**
+ * Settings.
+ */
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+  res.header('Content-Type', 'application/json');
+  next();
+});
+
+app.post('/', function (req, res) {
+  // Returning to client in request response the body request sent for him.
+  res.end(JSON.stringify(req.body, null, 2))
+});
 
 /**
  * Api routes.
