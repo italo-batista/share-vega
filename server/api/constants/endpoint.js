@@ -3,8 +3,8 @@
  * Author:  Italo Batista, italohmb@gmail.com
  * Last change: 09/2018
  */
-
-const VISUALIZATION = "/visualization";
+const API = '/api';
+const VISUALIZATION = API + '/visualization';
 
 class Endpoint {
   static get VISUALIZATION() {
