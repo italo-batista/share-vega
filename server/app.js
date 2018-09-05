@@ -11,6 +11,9 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path');
+const rfs = require('rotating-file-stream');
 
 const app = express();
 
@@ -20,6 +23,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 const ENV = process.env.ENVIROMENT || "development";
+const LOG_DIRECTORY = path.join("./", 'logs');
 
 /**
  * Settings.
@@ -36,7 +40,14 @@ app.post('/', function (req, res) {
   res.end(JSON.stringify(req.body, null, 2))
 });
 
-app.use(morgan('common'));
+fs.existsSync(LOG_DIRECTORY) || fs.mkdirSync(LOG_DIRECTORY);
+const logStream = rfs('share-vega.log', {
+  size:     '10M', // rotate every 10 MegaBytes written
+  compress: 'gzip', // compress rotated files,
+  path: LOG_DIRECTORY
+});
+app.use(morgan('dev'));
+app.use(morgan('common', {stream: logStream}));
 
 /**
  * Api routes.
