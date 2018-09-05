@@ -1,7 +1,7 @@
 /**
  * Application server.
  * Author:  Italo Batista, italohmb@gmail.com
- * Last change: 08/2018
+ * Last change: 09/2018
  */
 
 /**
@@ -15,6 +15,7 @@ const fs = require('fs');
 const path = require('path');
 const rfs = require('rotating-file-stream');
 const endpoint = require('./api/constants/endpoint');
+const swagger = require('swagger-express');
 
 const app = express();
 
@@ -29,6 +30,21 @@ const LOG_DIRECTORY = path.join("./", 'logs');
 /**
  * Settings.
  */
+
+app.all('/*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+app.use(swagger.init(app, {
+  apiVersion: '1.0',
+  swaggerVersion: '1.0',
+  basePath: 'http://localhost:3000',
+  swaggerURL: '/swagger',
+  swaggerJSON: '/api-docs.json',
+  swaggerUI: './doc/swagger/',
+  apis: ['./doc/api.yml']
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

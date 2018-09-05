@@ -1,3 +1,9 @@
+/**
+ * Application main class for tests.
+ * Author:  Italo Batista, italohmb@gmail.com
+ * Last change: 09/2018
+ */
+
 const app = require('./../server/app');
 const request = require('supertest');
 const endpoint = require('./../server/api/constants/endpoint');
