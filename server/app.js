@@ -8,12 +8,13 @@
  * Imports.
  */
 
-const express = require("express");
+const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
 const rfs = require('rotating-file-stream');
+const endpoint = require('./api/constants/endpoint');
 
 const app = express();
 
@@ -54,7 +55,7 @@ app.use(morgan('common', {stream: logStream}));
  */
 
 const visualizationRoutes = require("./api/routes/visualization");
-app.use("/visualization", visualizationRoutes);
+app.use(endpoint.VISUALIZATION, visualizationRoutes);
 
 /**
  * Startup our app at http://localhost:3000
