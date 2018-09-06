@@ -17,7 +17,7 @@ exports.getRouterFiles = function* walkSync(dir) {
     if (isDirectory) {
       yield* walkSync(pathToFile);
     } else {
-      if (pathToFile.includes("route")) {
+      if (pathToFile.includes("router")) {
         yield pathToFile;
       }
     }

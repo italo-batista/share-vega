@@ -79,7 +79,7 @@ app.use(morgan("common", { stream: logStream }));
 // Serving static files
 app.use("/static", express.static(STATIC_FILES_DIRECTORY));
 
-const visRoutes = require("./core/visualization/vis.route");
+const visRoutes = require("./core/visualization/vis.router");
 app.use(endpoint.VISUALIZATION, visRoutes);
 
 /**
