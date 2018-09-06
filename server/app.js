@@ -46,7 +46,7 @@ app.use(
     swaggerURL: "/docs/api",
     swaggerJSON: "/api-docs.json",
     swaggerUI: "./docs-ui/swagger/",
-    apis: ["./docs-ui/api.yml"]
+    apis: ["./server/core/visualization/vis.route.js"]
   })
 );
 
