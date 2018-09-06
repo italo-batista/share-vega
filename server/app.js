@@ -16,6 +16,7 @@ const path = require("path");
 const rfs = require("rotating-file-stream");
 const endpoint = require("./constants/endpoint");
 const swagger = require("swagger-express");
+const utilsFs = require("./utils/filesystem");
 
 const app = express();
 
