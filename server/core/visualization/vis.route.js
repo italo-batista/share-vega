@@ -26,7 +26,7 @@ var visController = require("./vis.ctrl");
  *   -  httpMethod: GET
  *      summary: Display list of all Visualizations.
  *      responseClass: Visualization
- *      nickname: index visualizations
+ *      nickname: index-visualizations
  */
 router.get("/", visController.index);
 
@@ -39,7 +39,7 @@ router.get("/:visualization_id", visController.show);
  *   -  httpMethod: POST
  *      summary: Handle Visualization create on POST.
  *      responseClass: Visualization
- *      nickname: show visualization
+ *      nickname: show-visualization
  */
 router.post("/", visController.create);
 
