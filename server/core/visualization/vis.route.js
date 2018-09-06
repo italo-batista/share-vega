@@ -7,7 +7,7 @@
 var express = require("express");
 var router = express.Router();
 
-var visuController = require("../controllers/visualization");
+var visuController = require("./vis.ctrl");
 
 /**
  * Maps routes to controller functions.

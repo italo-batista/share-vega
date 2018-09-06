@@ -5,8 +5,8 @@
   "main": "./server/app.js",
   "scripts": {
     "start": "node ./server/app.js",
-    "dev": "nodemon server.js",
-    "test": "NODE_ENV=test && mocha --timeout 10000 -- test/**/*.js"
+    "dev": "NOVE_END=development && nodemon ./server/app.js",
+    "test": "NODE_ENV=test && mocha --timeout 10000 -- server/**/*.test.js"
   },
   "repository": {
     "type": "git",
