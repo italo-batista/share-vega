@@ -17,7 +17,7 @@
 var express = require("express");
 var router = express.Router();
 
-var visuController = require("./vis.ctrl");
+var visController = require("./vis.ctrl");
 
 /**
  * @swagger
@@ -28,9 +28,9 @@ var visuController = require("./vis.ctrl");
  *      responseClass: Visualization
  *      nickname: index visualizations
  */
-router.get("/", visuController.index);
+router.get("/", visController.index);
 
-router.get("/:visualization_id", visuController.show);
+router.get("/:visualization_id", visController.show);
 
 /**
  * @swagger
@@ -41,11 +41,11 @@ router.get("/:visualization_id", visuController.show);
  *      responseClass: Visualization
  *      nickname: show visualization
  */
-router.post("/", visuController.create);
+router.post("/", visController.create);
 
-router.put("/:visualization_id", visuController.update);
+router.put("/:visualization_id", visController.update);
 
-router.delete("/:visualization_id", visuController.delete);
+router.delete("/:visualization_id", visController.delete);
 
 /**
  * Module exports.
