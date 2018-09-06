@@ -47,7 +47,7 @@ app.use(
     swaggerURL: "/docs/api",
     swaggerJSON: "/api-docs.json",
     swaggerUI: "./docs-ui/swagger/",
-    apis: ["./server/core/visualization/vis.route.js"]
+    apis: Array.from(utilsFs.getRouterFiles(__dirname))
   })
 );
 
