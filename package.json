@@ -2,10 +2,9 @@
   "name": "share-vega",
   "version": "1.0.0",
   "description": "Back-end for a specialized platform for creating, editing and sharing data visualizations created with Vega and Vega-Lite.",
-  "main": "./server/app.js",
   "scripts": {
     "start": "NODE_ENV=production node ./server/app.js",
-    "dev": "NODE_ENV=development nodemon ./server/app.js",
+    "dev": "NODE_ENV=development DEBUG=express:router* nodemon ./server/app.js",
     "test": "NODE_ENV=test mocha --timeout 10000 -- server/**/*.test.js"
   },
   "repository": {
@@ -25,6 +24,7 @@
     "body-parser": "^1.18.3",
     "chai": "^4.1.2",
     "chai-http": "^4.2.0",
+    "debug": "^3.1.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mocha": "^5.2.0",
