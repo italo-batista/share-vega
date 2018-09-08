@@ -24,6 +24,9 @@ const app = express();
  * Defining constants.
  */
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").load();
+}
 const PORT = process.env.PORT || 3000;
 const ENV = process.env.ENVIROMENT || "development";
 const LOG_DIRECTORY = path.join("./", "logs");
