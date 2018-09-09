@@ -17,6 +17,8 @@ const rfs = require("rotating-file-stream");
 const endpoint = require("./constants/endpoint");
 const swagger = require("swagger-express");
 const utilsFs = require("./utils/filesystem");
+const configDB = require("./config/db");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -74,6 +76,14 @@ const logStream = rfs("share-vega.log", {
 });
 app.use(morgan("dev"));
 app.use(morgan("common", { stream: logStream }));
+
+// Config DB
+let mongoUri = configDB.getMongoUri(ENV);
+let mongooseOpts = configDB.mongooseOpts;
+mongoose.connect(
+  mongoUri,
+  mongooseOpts
+);
 
 /**
  * Api routes.
