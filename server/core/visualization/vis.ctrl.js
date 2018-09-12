@@ -1,7 +1,7 @@
 /**
  * Controller for visualization for routes.
  * Author:  Italo Batista, italohmb@gmail.com
- * Last change: 08/2018
+ * Last change: 09/2018
  */
 
 const Visualization = require("./vis.model");
