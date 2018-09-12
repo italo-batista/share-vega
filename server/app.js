@@ -95,6 +95,9 @@ app.use("/static", express.static(STATIC_FILES_DIRECTORY));
 const visRoutes = require("./core/visualization/vis.router");
 app.use(endpoint.VISUALIZATION, visRoutes);
 
+const userRoutes = require("./core/user/user.router");
+app.use(endpoint.USER, userRoutes);
+
 /**
  * Startup our app at http://localhost:3000
  */

@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var bcrypt = require("bcryptjs");
+//var bcrypt = require("bcryptjs");
 
 var validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -39,7 +39,6 @@ var UserSchema = new Schema({
   },
   gender: {
     type: String,
-    required: true,
     enum: ["male", "female", "other"]
   },
   description: {
@@ -50,11 +49,11 @@ var UserSchema = new Schema({
 });
 
 UserSchema.methods.generateHash = function(password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
+  //return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
 };
 
 UserSchema.methods.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
+  //return bcrypt.compareSync(password, this.password);
 };
 
 var User = mongoose.model("User", UserSchema);
