@@ -4,6 +4,9 @@
  * Last change: 08/2018
  */
 
+const Visualization = require("./vis.model");
+const HttpStatus = require("../../constants/httpStatus");
+
 // Display list of all Visualizations.
 exports.index = function(req, res) {
   res.json("NOT IMPLEMENTED: Visualization list");
@@ -16,7 +19,15 @@ exports.show = function(req, res) {
 
 // Handle Visualization create on POST.
 exports.create = function(req, res) {
-  res.json("NOT IMPLEMENTED: Visualization create POST");
+  var vis = new Visualization(req.body);
+  vis
+    .save()
+    .catch(err => {
+      res.status(HttpStatus.BAD_REQUEST).send(err);
+    })
+    .then(createdVis => {
+      res.status(HttpStatus.OK).json(createdVis);
+    });
 };
 
 // Handle Visualization update on PUT.
