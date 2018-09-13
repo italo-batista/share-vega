@@ -8,11 +8,17 @@ const User = require("./user.model");
 const HttpStatus = require("../../constants/httpStatus");
 
 exports.show = function(req, res) {
-  res.json("NOT IMPLEMENTED: Visualization detail: " + req.params.id);
+  User.findById(req.params.user_id)
+  .catch(err => {
+    res.status(HttpStatus.BAD_REQUEST).send(err);
+  })
+  .then(user => {
+    res.status(HttpStatus.OK).json(user);
+  });
 };
 
 exports.create = function(req, res) {
-  var user = new User(req.body);
+  let user = new User(req.body);
   user
     .save()
     .catch(err => {
@@ -23,8 +29,27 @@ exports.create = function(req, res) {
     });
 };
 
-exports.update = function(req, res) {
-  res.json("NOT IMPLEMENTED: Visualization update PUT");
+exports.update = function(req, res) {  
+  User.findById(req.params.user_id)
+  .catch(err => {
+    res.status(HttpStatus.BAD_REQUEST).send(err);
+  })
+  .then(user => {
+    if (req.body.name) user.name = req.body.name;
+    if (req.body.username) user.username = req.body.username;
+    if (req.body.email) user.email = req.body.email;
+    if (req.body.gender) user.gender = req.body.gender;
+    if (req.body.description) user.description = req.body.description;
+    
+    user
+      .save()
+      .catch(err => {
+        res.status(HttpStatus.BAD_REQUEST).send(err);
+      })
+      .then(updatedUser => {
+        res.status(HttpStatus.OK).json(updatedUser);
+      });
+  });
 };
 
 exports.delete = function(req, res) {
