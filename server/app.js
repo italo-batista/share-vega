@@ -19,6 +19,7 @@ const swagger = require("swagger-express");
 const utilsFs = require("./utils/filesystem");
 const configDB = require("./config/db");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 
@@ -38,10 +39,15 @@ const STATIC_FILES_DIRECTORY = path.join("./", "static");
  * Settings.
  */
 
-app.all("/*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+// Cross-Origin Resource Sharing
+let corsOptions = {};
+if (process.env.NODE_ENV === "production") {
+  corsOptions = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  };
+}
+app.use(cors(corsOptions));
 
 // API documentation UI
 app.use(
