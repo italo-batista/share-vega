@@ -20,6 +20,8 @@ const utilsFs = require("./utils/filesystem");
 const configDB = require("./config/db");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const passport = require("passport");
+const session = require("express-session");
 
 const app = express();
 
@@ -43,7 +45,7 @@ const STATIC_FILES_DIRECTORY = path.join("./", "static");
 let corsOptions = {};
 if (process.env.NODE_ENV === "production") {
   corsOptions = {
-    origin: "http://localhost:3000",
+    origin: "http://0.0.0.0:3000",
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   };
 }
@@ -90,6 +92,23 @@ mongoose.connect(
   mongoUri,
   mongooseOpts
 );
+
+// Passport
+require("./config/passport")(passport);
+const ONE_MINUTE = 60;
+app.use(
+  session({
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 30 * ONE_MINUTE
+    }),
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 /**
  * Api routes.
