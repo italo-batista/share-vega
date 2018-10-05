@@ -6,6 +6,7 @@
 const API = "/api";
 const VISUALIZATION = API + "/visualization";
 const USER = API + "/user";
+const AUTH = API + "/auth";
 
 class Endpoint {
   static get VISUALIZATION() {
@@ -14,10 +15,9 @@ class Endpoint {
   static get USER() {
     return USER;
   }
+  static get AUTH() {
+    return AUTH;
+  }
 }
-
-/**
- * Module exports.
- */
 
 module.exports = Endpoint;

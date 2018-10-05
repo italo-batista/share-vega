@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const authController = require("./auth.controller");
+const authController = require("./auth.ctrl");
 
 router.get("/", authController.status);
 
