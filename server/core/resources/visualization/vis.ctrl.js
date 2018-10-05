@@ -1,20 +1,29 @@
-const Visualization = require("./vis.model");
+const VisStoreClient = require("./vis.store.client");
 const HttpStatus = require("../../../constants/httpStatus");
 
 exports.index = function(req, res) {
-  res.json("NOT IMPLEMENTED: Visualization list");
+  VisStoreClient.findVisz()
+    .catch((err) => {
+      res.status(HttpStatus.BAD_REQUEST).json(err);
+    })
+    .then((result) => {
+      res.status(HttpStatus.OK).json(result);
+    });
 };
 
-// Display details for a specific Visualization.
 exports.show = function(req, res) {
-  res.json("NOT IMPLEMENTED: Visualization detail: " + req.params.id);
+  VisStoreClient.findVisById(req.params.visualization_id)
+    .catch((error) => {
+      res.status(HttpStatus.BAD_REQUEST).json(error);
+    })
+    .then((fic) => {
+      res.status(HttpStatus.OK).json(fic);
+    });
 };
 
-// Handle Visualization create on POST.
 exports.create = function(req, res) {
-  let vis = new Visualization(req.body);
-  vis
-    .save()
+  VisStoreClient
+    .createVis(req.body)
     .catch(err => {
       res.status(HttpStatus.BAD_REQUEST).send(err);
     })
@@ -23,12 +32,24 @@ exports.create = function(req, res) {
     });
 };
 
-// Handle Visualization update on PUT.
 exports.update = function(req, res) {
-  res.json("NOT IMPLEMENTED: Visualization update PUT");
+  VisStoreClient
+    .updateVis(req.params.visualization_id, req.body)
+    .catch(err => {
+      res.status(HttpStatus.BAD_REQUEST).send(err);
+    })
+    .then(createdVis => {
+      res.status(HttpStatus.OK).json(createdVis);
+    });
 };
 
-// Handle Visualization delete on DELETE.
 exports.delete = function(req, res) {
-  res.json("NOT IMPLEMENTED: Visualization delete DELETE");
+  VisStoreClient
+    .deleteVis(req.params.fic_id)
+    .catch((error) => {
+      res.status(HttpStatus.BAD_REQUEST).json(error);
+    })
+    .then((deleted) => {
+      res.status(HttpStatus.OK).json(deleted);
+    })
 };

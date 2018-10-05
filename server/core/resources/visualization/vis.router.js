@@ -24,6 +24,7 @@ const visController = require("./vis.ctrl");
  */
 router.get("/", visController.index);
 
+// Display details for a specific Visualization.
 router.get("/:visualization_id", visController.show);
 
 /**
@@ -37,8 +38,10 @@ router.get("/:visualization_id", visController.show);
  */
 router.post("/", visController.create);
 
+// Handle Visualization update on PUT.
 router.put("/:visualization_id", visController.update);
 
+// Handle Visualization delete on DELETE.
 router.delete("/:visualization_id", visController.delete);
 
 /**
