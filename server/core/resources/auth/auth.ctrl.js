@@ -1,6 +1,6 @@
 const passport = require("passport");
 const _ = require("underscore");
-const HttpStatus = require("../../constants/httpStatus");
+const HttpStatus = require("../../../constants/httpStatus");
 
 exports.login = function(req, res, next) {
   passport.authenticate("local", function(err, user, info) {

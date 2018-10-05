@@ -6,13 +6,13 @@
 
 process.env.NODE_ENV = 'test';
 
-const server = require('../../app');
+const server = require('../../../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const should = chai.should();
 chai.use(chaiHttp);
-const endpoint = require('../../constants/endpoint');
-const HttpStatus = require('../../constants/httpStatus');
+const endpoint = require('../../../constants/endpoint');
+const HttpStatus = require('../../../constants/httpStatus');
 
 
 describe('Visualization', () => {

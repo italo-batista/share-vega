@@ -1,5 +1,5 @@
 const Visualization = require("./vis.model");
-const HttpStatus = require("../../constants/httpStatus");
+const HttpStatus = require("../../../constants/httpStatus");
 
 // Display list of all Visualizations.
 exports.index = function(req, res) {

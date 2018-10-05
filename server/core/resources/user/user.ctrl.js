@@ -5,7 +5,7 @@
  */
 
 const User = require("./user.model");
-const HttpStatus = require("../../constants/httpStatus");
+const HttpStatus = require("../../../constants/httpStatus");
 
 exports.show = function(req, res) {
   User.findById(req.params.user_id)
