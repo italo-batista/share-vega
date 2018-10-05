@@ -4,17 +4,20 @@ const mongoUris = {
   test_url: "mongodb://localhost/share-vega-test"
 };
 
-exports.getMongoUri = function(ENV) {
+exports.getMongoUri = function() {
+  let mongoUri;
+  let ENV = process.env.NODE_ENV;
+  let logMsg = `\nReturning mongo uri for ${ENV} mode!\n`;
+
   if (ENV == "production") {
-    console.log("Returning mongo uri for production mode!");
-    return mongoUris["url"];
+    mongoUri = mongoUris["url"];
   } else if (ENV == "development") {
-    console.log("Returning mongo uri for development mode!");
-    return mongoUris["local_url"];
+    mongoUri = mongoUris["local_url"];
   } else if (ENV == "test") {
-    console.log("Returning mongo uri for test mode!");
-    return mongoUris["test_url"];
+    mongoUri = mongoUris["test_url"];
   }
+  console.log(logMsg);
+  return mongoUri;
 };
 
 exports.mongooseOpts = {
