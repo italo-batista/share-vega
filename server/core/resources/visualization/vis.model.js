@@ -1,10 +1,11 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var VisualizationSchema = new Schema({
-  createdBy: {
+const VisualizationSchema = new Schema({
+  creator: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    required: true
   },
   gist_link: {
     type: String,
