@@ -1,10 +1,4 @@
 /**
- * Visualization API router module.
- * Author:  Italo Batista, italohmb@gmail.com
- * Last change: 09/2018
- */
-
-/**
  * @swagger
  * resourcePath: /api/visualization
  * description: All about API

@@ -1,9 +1,3 @@
-/**
- * Controller for visualization for routes.
- * Author:  Italo Batista, italohmb@gmail.com
- * Last change: 09/2018
- */
-
 const Visualization = require("./vis.model");
 const HttpStatus = require("../../constants/httpStatus");
 

@@ -21,7 +21,7 @@ consign()
   .into(app);
 
 /**
- * Startup our app at http://localhost:3000
+ * Startup
  */
 
 app.listen(PORT);
