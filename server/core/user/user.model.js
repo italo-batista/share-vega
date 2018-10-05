@@ -1,14 +1,14 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-//var bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
-var validateEmail = function(email) {
+const validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
 };
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -49,13 +49,14 @@ var UserSchema = new Schema({
 });
 
 UserSchema.methods.generateHash = function(password) {
-  //return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
 };
 
 UserSchema.methods.validPassword = function(password) {
-  //return bcrypt.compareSync(password, this.password);
+  // return bcrypt.compareSync(password, this.password);
+  return true;
 };
 
-var User = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
