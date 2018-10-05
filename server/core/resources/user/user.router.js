@@ -4,10 +4,10 @@
  * description: All about API for User
  */
 
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-var userController = require("./user.ctrl");
+const userController = require("./user.ctrl");
 
 router.get("/:user_id", userController.show);
 

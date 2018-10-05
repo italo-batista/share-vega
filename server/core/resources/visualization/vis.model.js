@@ -28,6 +28,6 @@ var VisualizationSchema = new Schema({
   }
 });
 
-var Visualization = mongoose.model("Visualization", VisualizationSchema);
+const Visualization = mongoose.model("Visualization", VisualizationSchema);
 
 module.exports = Visualization;

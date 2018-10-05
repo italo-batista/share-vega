@@ -13,7 +13,7 @@ exports.show = function(req, res) {
 
 // Handle Visualization create on POST.
 exports.create = function(req, res) {
-  var vis = new Visualization(req.body);
+  let vis = new Visualization(req.body);
   vis
     .save()
     .catch(err => {
