@@ -23,5 +23,6 @@ exports.getMongoUri = function() {
 exports.mongooseOpts = {
   autoReconnect: true,
   reconnectTries: Number.MAX_VALUE,
-  reconnectInterval: 1000
+  reconnectInterval: 1000,
+  useNewUrlParser: true
 };
