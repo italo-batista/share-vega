@@ -13,5 +13,5 @@ exports.updateUser = function(id, params) {
 };
 
 exports.deleteUser = function(id) {
-  return User.deleteOne({ _id: id }).exec();
+  return User.remove({ _id: id }).exec();
 };

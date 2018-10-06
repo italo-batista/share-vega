@@ -33,10 +33,6 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  new_password: {
-    type: String,
-    default: null
-  },
   gender: {
     type: String,
     enum: ["male", "female", "other"]
@@ -53,8 +49,7 @@ UserSchema.methods.generateHash = function(password) {
 };
 
 UserSchema.methods.validPassword = function(password) {
-  // return bcrypt.compareSync(password, this.password);
-  return true;
+  return bcrypt.compareSync(password, this.password);
 };
 
 const User = mongoose.model("User", UserSchema);

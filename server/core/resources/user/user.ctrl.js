@@ -45,7 +45,7 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-  UserStoreClient.deleteUser(req.params.visualization_id)
+  UserStoreClient.deleteUser(req.params.user_id)
     .catch(error => {
       res.status(HttpStatus.BAD_REQUEST).json(error);
     })
