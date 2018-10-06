@@ -6,10 +6,9 @@ const visRoutes = require("./resources/visualization/vis.router");
 const userRoutes = require("./resources/user/user.router");
 const authRoutes = require("./resources/auth/auth.router");
 
-const STATIC_FILES_DIRECTORY = path.join(__dirname, "../../static");
+const STATIC_FILES_DIRECTORY = path.join(__dirname, "../../public/");
 
 module.exports = app => {
-  
   // Serving static files
   app.use("/static", express.static(STATIC_FILES_DIRECTORY));
 
