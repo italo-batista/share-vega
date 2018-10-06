@@ -12,7 +12,7 @@ module.exports = app => {
       basePath: "http://localhost:3000",
       swaggerURL: "/docs/api",
       swaggerJSON: "/api-docs.json",
-      swaggerUI: "docs-ui/swagger/",
+      swaggerUI: "public/docs-ui/swagger/",
       apis: Array.from(utilsFs.getFilesWithPattern(root_path, ".doc.js"))
     })
   );
