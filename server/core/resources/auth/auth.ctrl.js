@@ -26,15 +26,15 @@ exports.login = function(req, res, next) {
 
 exports.logout = function(req, res) {
   req.logout();
-  res.status(HttpStatus.OK).send("Logged out!");
+  res.status(HttpStatus.OK).json("Logged out!");
 };
 
 exports.status = function(req, res) {
   let user = req.user;
   if (user) {
     user = _.omit(user.toJSON(), "password");
-    res.status(HttpStatus.OK).send({ user: user, status: true });
+    res.status(HttpStatus.OK).json({ user: user, status: true });
   } else {
-    res.status(HttpStatus.OK).send({ status: false });
+    res.status(HttpStatus.OK).json({ status: false });
   }
 };
