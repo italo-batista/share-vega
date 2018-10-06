@@ -22,7 +22,7 @@ router.get("/", visController.index);
 
 /**
  * @swagger
- * path: /api/visualization/:visualization_id
+ * path: /api/visualization/{visualization_id}
  * operations:
  *   -  httpMethod: GET
  *      summary: Display details for a specific Visualization.
@@ -77,19 +77,19 @@ router.post("/", visController.create);
  *        - name: creator
  *          description: User who wrote vis
  *          paramType: body
- *          required: true
+ *          required: false
  *          dataType: ObjectId
  *        - name: gist_link
  *          description: Url for vis in gist
  *          paramType: body
- *          required: true
+ *          required: false
  *          dataType: string
  */
 router.put("/:visualization_id", visController.update);
 
 /**
  * @swagger
- * path: /api/visualization/:visualization_id
+ * path: /api/visualization/{visualization_id}
  * operations:
  *   -  httpMethod: DELETE
  *      summary: Delete some Visualization.
