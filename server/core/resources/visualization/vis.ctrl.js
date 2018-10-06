@@ -3,27 +3,26 @@ const HttpStatus = require("../../../constants/httpStatus");
 
 exports.index = function(req, res) {
   VisStoreClient.findVisz()
-    .catch((err) => {
+    .catch(err => {
       res.status(HttpStatus.BAD_REQUEST).json(err);
     })
-    .then((result) => {
+    .then(result => {
       res.status(HttpStatus.OK).json(result);
     });
 };
 
 exports.show = function(req, res) {
   VisStoreClient.findVisById(req.params.visualization_id)
-    .catch((error) => {
+    .catch(error => {
       res.status(HttpStatus.BAD_REQUEST).json(error);
     })
-    .then((fic) => {
+    .then(fic => {
       res.status(HttpStatus.OK).json(fic);
     });
 };
 
 exports.create = function(req, res) {
-  VisStoreClient
-    .createVis(req.body)
+  VisStoreClient.createVis(req.body)
     .catch(err => {
       res.status(HttpStatus.BAD_REQUEST).send(err);
     })
@@ -33,8 +32,7 @@ exports.create = function(req, res) {
 };
 
 exports.update = function(req, res) {
-  VisStoreClient
-    .updateVis(req.params.visualization_id, req.body)
+  VisStoreClient.updateVis(req.params.visualization_id, req.body)
     .catch(err => {
       res.status(HttpStatus.BAD_REQUEST).send(err);
     })
@@ -44,12 +42,11 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-  VisStoreClient
-    .deleteVis(req.params.fic_id)
-    .catch((error) => {
+  VisStoreClient.deleteVis(req.params.visualization_id)
+    .catch(error => {
       res.status(HttpStatus.BAD_REQUEST).json(error);
     })
-    .then((deleted) => {
+    .then(deleted => {
       res.status(HttpStatus.OK).json(deleted);
-    })
+    });
 };

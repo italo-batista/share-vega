@@ -1,29 +1,21 @@
 const Visualization = require("./vis.model");
 
 exports.findVisz = function() {
-  return Visualization
-    .find({})
-    .exec();
+  return Visualization.find({}).exec();
 };
 
-exports.findVisById = function (id) {
-  return Visualization
-    .find({ "_id": id }, { "_id": false })
-    .exec();
+exports.findVisById = function(id) {
+  return Visualization.find({ _id: id }, { _id: false }).exec();
 };
 
-exports.createVis = function (params) {
+exports.createVis = function(params) {
   return new Visualization(params).save();
 };
 
-exports.updateVis = function (id, params) {
-  return Visualization
-    .updateOne({ _id: id }, { $set: params })
-    .exec();
+exports.updateVis = function(id, params) {
+  return Visualization.updateOne({ _id: id }, { $set: params }).exec();
 };
 
-exports.deleteVis = function (id) {
-  return Visualization
-    .deleteOne({_id: id})
-    .exec();
+exports.deleteVis = function(id) {
+  return Visualization.deleteOne({ _id: id }).exec();
 };
