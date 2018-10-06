@@ -1,4 +1,3 @@
-
 const fs = require("fs");
 const path = require("path");
 
@@ -8,19 +7,18 @@ const path = require("path");
  * @param {String} dir
  * @returns {IterableIterator<String>}
  */
-exports.getRouterFiles = function* walkSync(dir) {
+exports.getFilesWithPattern = function* walkSync(dir, pattern) {
   const files = fs.readdirSync(dir);
-  
+
   for (const file of files) {
     const pathToFile = path.join(dir, file);
     const isDirectory = fs.statSync(pathToFile).isDirectory();
     if (isDirectory) {
-      yield* walkSync(pathToFile);
+      yield* walkSync(pathToFile, pattern);
     } else {
-      if (pathToFile.includes("router")) {
+      if (pathToFile.includes(pattern)) {
         yield pathToFile;
       }
     }
   }
 };
-  
