@@ -11,14 +11,17 @@ exports.show = function(req, res) {
     });
 };
 
-exports.create = function(req, res) {
-  UserStoreClient.createUser(req.body)
-    .catch(err => {
-      res.status(HttpStatus.BAD_REQUEST).send(err);
-    })
-    .then(createdUser => {
-      res.status(HttpStatus.OK).json(createdUser);
-    });
+exports.create = async function(req, res) {
+  try {
+    let createdUser = await UserStoreClient.createUser(req.body);
+    res.status(HttpStatus.OK).json(createdUser);
+  } catch (err) {
+    if (err.name == "MongoError" && err.code === 11000) {
+      res.status(HttpStatus.FORBIDDEN).json("Duplicated enetity");
+    } else {
+      res.status(HttpStatus.BAD_REQUEST).json(err);
+    }
+  }
 };
 
 exports.update = function(req, res) {
