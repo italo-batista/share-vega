@@ -2,9 +2,7 @@ const express = require("express");
 const consign = require("consign");
 
 // Defining constants.
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").load();
-}
+if (process.env.NODE_ENV !== "production") require("dotenv").load();
 const PORT = process.env.PORT || 3000;
 
 // Settings.
