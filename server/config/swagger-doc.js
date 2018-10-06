@@ -13,7 +13,7 @@ module.exports = app => {
       swaggerURL: "/docs/api",
       swaggerJSON: "/api-docs.json",
       swaggerUI: "docs-ui/swagger/",
-      apis: Array.from(utilsFs.getRouterFiles(root_path))
+      apis: Array.from(utilsFs.getFilesWithPattern(root_path, ".doc.js"))
     })
   );
 };
