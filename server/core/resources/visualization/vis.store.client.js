@@ -1,5 +1,9 @@
 const Visualization = require("./vis.model");
 
+exports.getVisAttrs = function() {
+  return Object.keys(Visualization.schema.paths);
+};
+
 exports.findVisz = function() {
   return Visualization.find({}).exec();
 };
@@ -18,4 +22,8 @@ exports.updateVis = function(id, params) {
 
 exports.deleteVis = function(id) {
   return Visualization.deleteOne({ _id: id }).exec();
+};
+
+exports.deleteVisz = function() {
+  return Visualization.deleteMany({}).exec();
 };

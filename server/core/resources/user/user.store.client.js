@@ -23,3 +23,7 @@ exports.updateUser = function(id, params) {
 exports.deleteUser = function(id) {
   return User.remove({ _id: id }).exec();
 };
+
+exports.deleteUsers = function() {
+  return User.deleteMany({}).exec();
+};
