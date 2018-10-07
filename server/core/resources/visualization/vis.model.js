@@ -16,7 +16,8 @@ const VisualizationSchema = new Schema({
     default: Date.now
   },
   dateLastUpdate: {
-    type: Date
+    type: Date,
+    default: Date.now
   },
   forkedBy: {
     type: [
