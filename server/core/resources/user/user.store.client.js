@@ -1,7 +1,7 @@
 const User = require("./user.model");
 
 exports.findUserById = function(id) {
-  return User.find({ _id: id }, { _id: false }).exec();
+  return User.findOne({ _id: id }, { _id: false }).exec();
 };
 
 exports.createUser = async function(params) {
@@ -21,7 +21,7 @@ exports.updateUser = function(id, params) {
 };
 
 exports.deleteUser = function(id) {
-  return User.remove({ _id: id }).exec();
+  return User.deleteOne({ _id: id }).exec();
 };
 
 exports.deleteUsers = function() {

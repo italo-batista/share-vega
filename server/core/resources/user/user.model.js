@@ -39,8 +39,7 @@ const UserSchema = new Schema({
   },
   description: {
     type: String,
-    maxlength: 240,
-    default: "No description."
+    maxlength: 240
   }
 });
 

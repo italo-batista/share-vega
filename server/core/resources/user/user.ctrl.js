@@ -6,8 +6,12 @@ exports.show = function(req, res) {
     .catch(error => {
       res.status(HttpStatus.BAD_REQUEST).json(error);
     })
-    .then(fic => {
-      res.status(HttpStatus.OK).json(fic);
+    .then(user => {
+      if (user === undefined || user === null) {
+        res.status(HttpStatus.BAD_REQUEST).send(); // TODO add msg: User not found
+      } else {
+        res.status(HttpStatus.OK).json(user);
+      }
     });
 };
 
