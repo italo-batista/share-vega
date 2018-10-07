@@ -1,5 +1,4 @@
 const mongoUris = {
-  url: "mongodb://localhost/share-vega",
   local_url: "mongodb://localhost/share-vega",
   test_url: "mongodb://localhost/share-vega-test"
 };
@@ -9,8 +8,10 @@ exports.getMongoUri = function() {
   let ENV = process.env.NODE_ENV;
   let logMsg = `\nReturning mongo uri for ${ENV} mode!\n`;
 
+  if (process.env.NODE_ENV === "production") require("dotenv").load();
+
   if (ENV == "production") {
-    mongoUri = mongoUris["url"];
+    mongoUri = process.env.MONGOURI;
   } else if (ENV == "development") {
     mongoUri = mongoUris["local_url"];
   } else if (ENV == "test") {

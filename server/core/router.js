@@ -1,16 +1,12 @@
-/**
- * Api routes.
- */
-
 const path = require("path");
 const express = require("express");
 const endpoint = require("../constants/endpoint");
 
-const visRoutes = require("./visualization/vis.router");
-const userRoutes = require("./user/user.router");
-const authRoutes = require("./auth/auth.router");
+const visRoutes = require("./resources/visualization/vis.router");
+const userRoutes = require("./resources/user/user.router");
+const authRoutes = require("./resources/auth/auth.router");
 
-const STATIC_FILES_DIRECTORY = path.join("./../../", "static");
+const STATIC_FILES_DIRECTORY = path.join(__dirname, "../../public/");
 
 module.exports = app => {
   // Serving static files
