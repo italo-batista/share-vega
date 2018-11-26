@@ -27,6 +27,10 @@ const VisualizationSchema = new Schema({
       }
     ],
     default: []
+  },
+  title: {
+    type: String,
+    required: true
   }
 });
 
