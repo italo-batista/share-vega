@@ -3,7 +3,7 @@ const consign = require("consign");
 
 // Defining constants.
 if (process.env.NODE_ENV !== "production") require("dotenv").load();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Settings.
 const app = express();
