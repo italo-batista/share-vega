@@ -31,6 +31,15 @@ const VisualizationSchema = new Schema({
   title: {
     type: String,
     required: true
+  },
+  userStars: {
+    type: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      }
+    ],
+    default: []
   }
 });
 
