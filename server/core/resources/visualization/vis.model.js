@@ -27,6 +27,15 @@ const VisualizationSchema = new Schema({
       }
     ],
     default: []
+  },
+  userStars: {
+    type: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"        
+      }
+    ],
+    default: []
   }
 });
 

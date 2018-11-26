@@ -12,6 +12,10 @@ exports.findVisById = function(id) {
   return Visualization.find({ _id: id }, { _id: false }).exec();
 };
 
+exports.findOneVisById = function(id) {
+  return Visualization.findOne({ _id: id }, { _id: false }).exec();
+};
+
 exports.createVis = function(params) {
   return new Visualization(params).save();
 };

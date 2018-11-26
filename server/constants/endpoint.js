@@ -7,6 +7,7 @@ const API = "/api";
 const VISUALIZATION = API + "/visualization";
 const USER = API + "/user";
 const AUTH = API + "/auth";
+const STAR = API + "/star";
 
 class Endpoint {
   static get VISUALIZATION() {
@@ -17,6 +18,9 @@ class Endpoint {
   }
   static get AUTH() {
     return AUTH;
+  }
+  static get STAR() {
+    return STAR;
   }
 }
 
