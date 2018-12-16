@@ -19,7 +19,7 @@ exports.login = function(req, res, next) {
           .json({ err: err, msg: "Could not log in user" });
       }
 
-      res.status(HttpStatus.OK).json({ msg: "Login successful!" });
+      res.status(HttpStatus.OK).json(user);
     });
   })(req, res, next);
 };

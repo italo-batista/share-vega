@@ -9,7 +9,7 @@ exports.findVisz = function() {
 };
 
 exports.findVisById = function(id) {
-  return Visualization.find({ _id: id }, { _id: false }).exec();
+  return Visualization.find({ _id: id }).exec();
 };
 
 exports.findOneVisById = function(id) {

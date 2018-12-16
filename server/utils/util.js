@@ -4,4 +4,4 @@ exports.removeItemFromArray = function(mArray, item) {
     mArray.splice(itemIndex, 1);
   }
   return mArray;
-}
+};
