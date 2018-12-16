@@ -14,4 +14,4 @@ To run server locally, type
 npm run dev
 ```
 
-Server will open on port 3000.
+Server will open on port 8080.
